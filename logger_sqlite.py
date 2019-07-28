@@ -27,7 +27,7 @@ class Logger:
         for table, data in self.data_dict.items():
             cnt = len(data)-1
             params = '?' + ',?'*cnt
-            cursor.execute(f"INSERT INTO {table} VALUES({params})", data)
+            cursor.executemany(f"INSERT INTO {table} VALUES({params})", data)
             conn.commit()
 
         conn.close()
